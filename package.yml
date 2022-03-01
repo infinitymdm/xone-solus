@@ -1,0 +1,31 @@
+name       : xone
+version    : 0.2
+release    : 1
+source     :
+    - https://github.com/medusalix/xone/archive/refs/tags/v0.2.tar.gz : 679dc5eadb669ee4b502f111b7ea9b7e35e484f923ae3374e25f0c04b72ce969
+homepage   : https://github.com/medusalix/xone
+license    : GPL-2.0
+summary    : Linux kernel driver for Xbox One and Xbox Series X|S accessories
+component  : kernel.drivers
+strip      : no
+builddeps  :
+    - pkgconfig(alsa)
+    - linux-current
+    - linux-current-headers
+description: |
+    xone is a Linux kernel driver for Xbox One and Xbox Series X|S accessories. It serves as a modern replacement for xpad, aiming to be compatible with Microsoft's Game Input Protocol (GIP).
+build      : |
+    # Build kernel modules
+    %make -C /lib/modules/%kernel_version_current%/build M=$PWD
+install    : |
+    # Install kernel drivers
+    install -D -d -m 00755 $installdir/lib/modules/%kernel_version_current%/drivers/input/joystick
+    install -m 00755 *.ko $installdir/lib/modules/%kernel_version_current%/drivers/input/joystick/.
+
+    # Copy firmware update script
+    install -D -m 00755 install/firmware.sh $installdir/usr/bin/xone-get-firmware.sh
+
+    # Avoid conflict with mt76x2u
+    if lsmod | grep -q '^mt76x2u'; then
+        modprobe -r mt76x2u
+    fi
