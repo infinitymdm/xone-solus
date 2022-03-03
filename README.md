@@ -7,7 +7,11 @@ I've done some basic testing with my controller (model 1708) with the xbox wirel
 1. Download the most recent .eopkg from the releases page.
 2. Open a terminal and `cd` to wherever you donwloaded the .eopkg.
 3. Install using `sudo eopkg install xone-X.X-X-X-x86_64.eopkg`.
-4. Run `sudo modprobe -r mt76x2u`. 
-5. Profit
+4. Run `sudo modprobe -r mt76x2u`. This prevents a driver conflict.
+5. Run `sudo xone-get-firmware.sh`. This installs the (proprietary) firmware for the Xbox wireless dongle.
+6. Profit
 
 If you have issues installing, let me know by [creating an issue](https://github.com/infinitymdm/xone-solus/issues). All other problems (pairing, bugs, etc.) should be directed to the xone maintainers.
+
+## Uninstalling
+Simply run `sudo eopkg remove xone` to uninstall.
