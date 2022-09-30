@@ -34,13 +34,13 @@
             <Dependency releaseFrom="1">xone-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/5.15.43-215.current/drivers/input/joystick/xone-dongle.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.43-215.current/drivers/input/joystick/xone-gip-chatpad.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.43-215.current/drivers/input/joystick/xone-gip-gamepad.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.43-215.current/drivers/input/joystick/xone-gip-guitar.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.43-215.current/drivers/input/joystick/xone-gip-headset.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.43-215.current/drivers/input/joystick/xone-gip.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.43-215.current/drivers/input/joystick/xone-wired.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-dongle.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-chatpad.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-gamepad.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-guitar.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-headset.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-wired.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -55,7 +55,7 @@
     </Package>
     <History>
         <Update release="1">
-            <Date>2022-06-21</Date>
+            <Date>2022-09-30</Date>
             <Version>0.3</Version>
             <Comment>Packaging update</Comment>
             <Name>Marcus Mellor</Name>
