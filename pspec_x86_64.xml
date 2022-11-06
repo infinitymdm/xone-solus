@@ -3,8 +3,8 @@
         <Name>xone</Name>
         <Homepage>https://github.com/medusalix/xone</Homepage>
         <Packager>
-            <Name>Marcus Mellor</Name>
-            <Email>infinitymdm@gmail.com</Email>
+            <Name>infinitymdm</Name>
+            <Email>35574527+infinitymdm@users.noreply.github.com</Email>
         </Packager>
         <License>GPL-2.0-or-later</License>
         <PartOf>system.utils</PartOf>
@@ -34,13 +34,13 @@
             <Dependency releaseFrom="1">xone-common</Dependency>
         </RuntimeDependencies>
         <Files>
-            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-dongle.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-chatpad.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-gamepad.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-guitar.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip-headset.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-gip.ko</Path>
-            <Path fileType="data">/lib/modules/5.15.68-218.current/drivers/input/joystick/xone-wired.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.77-219.current/drivers/input/joystick/xone-dongle.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.77-219.current/drivers/input/joystick/xone-gip-chatpad.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.77-219.current/drivers/input/joystick/xone-gip-gamepad.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.77-219.current/drivers/input/joystick/xone-gip-guitar.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.77-219.current/drivers/input/joystick/xone-gip-headset.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.77-219.current/drivers/input/joystick/xone-gip.ko</Path>
+            <Path fileType="data">/lib/modules/5.15.77-219.current/drivers/input/joystick/xone-wired.ko</Path>
         </Files>
     </Package>
     <Package>
@@ -55,11 +55,66 @@
     </Package>
     <History>
         <Update release="1">
-            <Date>2022-09-30</Date>
+            <Date>2022-06-21</Date>
             <Version>0.3</Version>
-            <Comment>Packaging update</Comment>
-            <Name>Marcus Mellor</Name>
-            <Email>infinitymdm@gmail.com</Email>
+            <Comment>Update README.md</Comment>
+            <Name>infinitymdm</Name>
+            <Email>35574527+infinitymdm@users.noreply.github.com</Email>
+        </Update>
+        <Update release="1">
+            <Date>2022-06-21</Date>
+            <Version>0.3</Version>
+            <Comment>Update README.md</Comment>
+            <Name>infinitymdm</Name>
+            <Email>35574527+infinitymdm@users.noreply.github.com</Email>
+        </Update>
+        <Update release="1">
+            <Date>2022-06-21</Date>
+            <Version>0.3</Version>
+            <Comment>Update README.md</Comment>
+            <Name>infinitymdm</Name>
+            <Email>35574527+infinitymdm@users.noreply.github.com</Email>
+        </Update>
+        <Update release="1">
+            <Date>2022-06-21</Date>
+            <Version>0.3</Version>
+            <Comment>Update README.md</Comment>
+            <Name>infinitymdm</Name>
+            <Email>35574527+infinitymdm@users.noreply.github.com</Email>
+        </Update>
+        <Update release="1">
+            <Date>2022-03-03</Date>
+            <Version>0.2</Version>
+            <Comment>Update README.md
+
+Added firmware download step to Install instructions
+Added Uninstalling section</Comment>
+            <Name>Marcus</Name>
+            <Email>marcus.mellor@eagles.oc.edu</Email>
+        </Update>
+        <Update release="1">
+            <Date>2022-03-03</Date>
+            <Version>0.2</Version>
+            <Comment>Update README.md
+
+Added firmware download step to Install instructions
+Added Uninstalling section</Comment>
+            <Name>Marcus</Name>
+            <Email>marcus.mellor@eagles.oc.edu</Email>
+        </Update>
+        <Update release="1">
+            <Date>2022-03-02</Date>
+            <Version>0.2</Version>
+            <Comment>Merge branch &apos;main&apos; of https://github.com/infinitymdm/xone-solus</Comment>
+            <Name>Marcus</Name>
+            <Email>marcus.mellor@eagles.oc.edu</Email>
+        </Update>
+        <Update release="1">
+            <Date>2022-03-01</Date>
+            <Version>0.2</Version>
+            <Comment>Update README.md</Comment>
+            <Name>infinitymdm</Name>
+            <Email>35574527+infinitymdm@users.noreply.github.com</Email>
         </Update>
     </History>
 </PISI>
