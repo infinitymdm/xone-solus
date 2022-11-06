@@ -7,38 +7,63 @@ homepage   : https://github.com/medusalix/xone
 license    : GPL-2.0-or-later
 component  :
     - kernel.drivers
+    - lts: kernel.drivers
     - current: kernel.drivers
+    - next: kernel.drivers
     - common : system.utils
     - modaliases : kernel.drivers
 summary    : 
     - Linux kernel driver for Xbox One and Xbox Series X|S accessories
+    - lts: xone for the linux-lts kernel
     - current: xone for the linux-current kernel
+    - next: xone for the linux-next kernel
     - common : Common component for xone kernel modules
     - modaliases : These files are used by the Software Center for hardware detection
 description: |
     xone is a Linux kernel driver for Xbox One and Xbox Series X|S accessories. It serves as a modern replacement for xpad, aiming to be compatible with Microsoft's Game Input Protocol.
 builddeps  :
     - pkgconfig(alsa)
+    - linux-lts
+    - linux-lts-headers
     - linux-current
     - linux-current-headers
+    - linux-next
+    - linux-next-headers
 patterns   :
     - common : /*
+    - lts : /lib/modules/*.lts
     - current : /lib/modules/*.current
+    - next : /lib/modules/*.next
     - modaliases : /usr/share/linux-driver-management/modaliases
 rundeps    :
     - common :
         - upower
     - xone-common
+    - lts :
+        - xone-common
     - current : 
+        - xone-common
+    - next :
         - xone-common
 setup      : |
     # Prep build dirs for lts and current
     pushd ../
-    #cp -a "xone-${version}" lts-build # This will be needed when we have linux-lts >= 4.15
-    cp -a "xone-${version}" current-build
+    for kpkg in 'lts' 'current' 'next'
+    do 
+        cp -a "xone-${version}" ${kpkg}-build
+    done
     popd
 build      : |
-    # lts will be added in the future
+    # Build LTS kernel modules
+    pushd lts-build
+    KVER=%kernel_version_lts%
+    %make -C /lib/modules/$KVER/build M=$PWD
+
+    # Generate modaliases
+    mkmodaliases "${package}" -o "${package}.modaliases" *.ko
+    popd
+
+    # Build current kernel modules
     pushd current-build
     KVER=%kernel_version_current%
     %make -C /lib/modules/$KVER/build M=$PWD
@@ -46,15 +71,48 @@ build      : |
     # Generate modaliases
     mkmodaliases "${package}" -o "${package}.modaliases" *.ko
     popd
+
+    # Build next kernel modules
+    pushd next-build
+    KVER=6.0.7-20.next
+    %make -C /lib/modules/$KVER/build M=$PWD
+
+    # Generate modaliases
+    mkmodaliases "${package}" -o "${package}.modaliases" *.ko
+    popd
 install    : |
-    # lts will be added in the future
+    # Install LTS kernel drivers
+    pushd lts-build
+    KVER=%kernel_version_lts%
+    install -D -d -m 00644 $installdir/lib/modules/$KVER/drivers/input/joystick
+    install -D -m 00644 *.ko $installdir/lib/modules/$KVER/drivers/input/joystick/.
+    install -D -m 00644 install/modprobe.conf $installdir/usr/lib/modprobe.d/xone-blacklist.conf 
+    install -D -m 00755 install/firmware.sh $installdir/usr/bin/xone-get-firmware.sh
+    
+    # Install modaliases for LDM
+    install -D -m 00644 ${package}.modaliases $installdir/usr/share/linux-driver-management/modaliases/${package}.modaliases
+    popd
+
+    # Install current kernel drivers
     pushd current-build
     KVER=%kernel_version_current%
     install -D -d -m 00644 $installdir/lib/modules/$KVER/drivers/input/joystick
     install -D -m 00644 *.ko $installdir/lib/modules/$KVER/drivers/input/joystick/.
     install -D -m 00644 install/modprobe.conf $installdir/usr/lib/modprobe.d/xone-blacklist.conf 
     install -D -m 00755 install/firmware.sh $installdir/usr/bin/xone-get-firmware.sh
-    popd
 
     # Install modaliases for LDM
-    install -D -m 00644 current-build/${package}.modaliases $installdir/usr/share/linux-driver-management/modaliases/${package}.modaliases
+    install -D -m 00644 ${package}.modaliases $installdir/usr/share/linux-driver-management/modaliases/${package}.modaliases
+    popd
+
+    # Install next kernel drivers
+    pushd next-build
+    KVER=6.0.7-20.next
+    install -D -d -m 00644 $installdir/lib/modules/$KVER/drivers/input/joystick
+    install -D -m 00644 *.ko $installdir/lib/modules/$KVER/drivers/input/joystick/.
+    install -D -m 00644 install/modprobe.conf $installdir/usr/lib/modprobe.d/xone-blacklist.conf 
+    install -D -m 00755 install/firmware.sh $installdir/usr/bin/xone-get-firmware.sh
+    
+    # Install modaliases for LDM
+    install -D -m 00644 ${package}.modaliases $installdir/usr/share/linux-driver-management/modaliases/${package}.modaliases
+    popd
