@@ -7,13 +7,11 @@ homepage   : https://github.com/medusalix/xone
 license    : GPL-2.0-or-later
 component  :
     - kernel.drivers
-    - lts: kernel.drivers
     - current: kernel.drivers
     - common : system.utils
     - modaliases : kernel.drivers
 summary    : 
     - Linux kernel driver for Xbox One and Xbox Series X|S accessories
-    - lts: xone for the linux-lts kernel
     - current: xone for the linux-current kernel
     - common : Common component for xone kernel modules
     - modaliases : These files are used by the Software Center for hardware detection
@@ -27,15 +25,15 @@ builddeps  :
     - linux-current-headers
 patterns   :
     - common : /*
-    - lts : /lib/modules/*.lts
+    - main : /lib/modules/*.lts
     - current : /lib/modules/*.current
     - modaliases : /usr/share/linux-driver-management/modaliases
+permanent  :
+    - /lib/modules
 rundeps    :
     - common :
         - upower
     - xone-common
-    - lts :
-        - xone-common
     - current : 
         - xone-common
 setup      : |
