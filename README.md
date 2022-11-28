@@ -5,22 +5,6 @@ I've done some basic testing with my controller (model 1708) with the xbox wirel
 
 ## Installation
 
-### From Solus Grocery Store
-xone is available in the unofficial [Solus Grocery Store repository](https://gitlab.com/solus-grocery-store/solus-grocery-store)! Click the link and scroll down to the README for instructions on setting that up.
+xone is available from the official Solus repository. Since it's a kernel module, you'll need to figure out which version of the Linux kernel you're using.
 
-### From eopkg
-1. Download the most recent .eopkg from the releases page.
-2. Open a terminal and `cd` to wherever you donwloaded the .eopkg.
-3. Install using `sudo eopkg install xone-X.X-X-X-x86_64.eopkg`.
-    - You'll need to install the xone-common package first, then xone-current.
-    - You can put both on the same line a la `sudo eopkg it xone-common-[stuff].eopkg xone-current-[stuff].eopkg`.
-4. Reboot.
-5. Unplug your Xbox wireless dongle and then run `sudo xone-get-firmware.sh`.
-    - This installs the (proprietary) firmware for the Xbox wireless dongle.
-    - After the install is done, you can plug the dongle back in.
-6. Profit
-
-If you have issues installing, let me know by [creating an issue](https://github.com/infinitymdm/xone-solus/issues). All other problems (pairing, bugs, etc.) should be directed to the xone maintainers.
-
-## Uninstalling
-Simply run `sudo eopkg remove xone` to uninstall.
+Solus provides two kernel packages: LTS and Current. If you don't know which one your system is using, open a terminal and run `uname -r`. If the output ends in `current`, you'll want the `xone-current` package. If it ends in `lts`, you'll want the `xone` package. Both can be found in Software Center, or by using `eopkg`.
